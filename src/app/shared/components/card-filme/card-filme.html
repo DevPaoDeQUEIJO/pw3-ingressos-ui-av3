@@ -1,0 +1,12 @@
+<mat-card class="card-capa">
+  <img mat-card-image src="{{ filme.capa }}" alt="Capa do filme {{ filme.nome }}">
+  <mat-card-content>
+    <ul>
+      <li>{{filme.nome}}</li>
+      <li>{{filme.duracao }} min</li>
+    </ul>
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-flat-button color="primary" routerLink="/filmes/detalhes/{{filme.id}}">VER DETALHES</a>
+  </mat-card-actions>
+</mat-card>

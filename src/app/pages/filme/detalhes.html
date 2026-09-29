@@ -1,0 +1,80 @@
+<app-container>
+  @if (filme | async; as item) {
+
+  <div class="detalhes-container">
+    <h1>{{ item.nome }}</h1>
+
+    <div class="detalhes-content">
+      <div class="poster">
+        <img [src]="item.capa" alt="{{ item.nome }}" />
+      </div>
+
+      <div class="info">
+        <div class="info-item">
+          <label>Classificação:</label>
+          <span>{{ item.classificacao }}</span>
+        </div>
+
+        <div class="info-item">
+          <label>Ano:</label>
+          <span>item.ano</span>
+        </div>
+
+        <div class="info-item">
+          <label>Diretores:</label>
+          <span>{{ item.diretor }}</span>
+        </div>
+
+        <div class="info-item">
+          <label>Elenco:</label>
+          <span>{{ item.elenco }}</span>
+        </div>
+
+        <div class="info-item">
+          <label>Descrição:</label>
+          <span>{{ item.descricao }}</span>
+        </div>
+
+        <div class="info-item">
+          <label>Avaliação:</label>
+          <span class="rating">{{ item.avaliacao | number:'1.1-1' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <h2>Sessões Disponíveis</h2>
+    <div class="table-container">
+      @if (item.sessoes && item.sessoes.length > 0) {
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Sala</th>
+              <th>Data</th>
+              <th>Horário</th>
+              <th>Preço</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+              @for (sessao of item.sessoes; track sessao.id) {
+                <tr>
+                  <td>{{ sessao.sala?.nome }} </td>
+                  <td>{{ sessao.data | date:'dd/MM/yyyy' }}</td>
+                  <td>{{ sessao.data | date:'HH:mm' }}</td>
+                  <td class="price">{{ sessao.preco | currency:'BRL':'symbol':'1.2-2' }}</td>
+                  <td>
+                    <a mat-raised-button color="primary" routerLink="/sessao/{{item.id}}/lugares">
+                      <mat-icon>shopping_cart</mat-icon> Comprar
+                    </a>
+                  </td>
+                </tr>
+              }
+          </tbody>
+        </table>
+      } @else {
+        <h3>Sem sessões disponíveis</h3>
+      }
+    </div>
+  </div>
+  }
+</app-container>

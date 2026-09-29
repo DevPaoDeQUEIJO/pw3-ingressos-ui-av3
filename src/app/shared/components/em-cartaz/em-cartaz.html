@@ -1,0 +1,16 @@
+<app-container>
+  <div class="cartaz-container">
+    <h2>Em Cartaz</h2>
+    <div class="card-wrapper">
+      @if (filmes | async; as listaFilmes) {
+        @if (listaFilmes.length > 0) {
+          @for (item of listaFilmes; track item.id) {
+            <app-card-filme [filme]="item"></app-card-filme>
+          }
+        } @else {
+          <p>Sem filmes em cartaz no momento.</p>
+        }
+      }
+    </div>
+  </div>
+</app-container>

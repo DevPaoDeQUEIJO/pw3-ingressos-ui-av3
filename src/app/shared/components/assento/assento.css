@@ -1,0 +1,46 @@
+figcaption {
+  text-align: center;
+  font-size: 12px;
+}
+
+.assento {
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.assento.disponivel:hover,
+.assento.escolhido:hover {
+  transform: scale(1.2);
+}
+
+.assento.ocupado {
+  cursor: not-allowed;
+}
+
+.assento.readonly {
+  cursor: default;
+}
+
+.disponivel {
+  fill: #0db6b5;
+  color: #0db6b5;
+}
+
+.ocupado {
+  fill: #d5d5d5;
+  color: #d5d5d5;
+}
+
+.escolhido {
+  fill: #ff9800;
+  color: #ff9800;
+}
+
+@media screen and (max-width: 720px) {
+  .assento {
+    height: 24px;
+    width: 24px;
+  }
+}

@@ -1,0 +1,27 @@
+<header class="app-header">
+  <mat-toolbar>
+    <a routerLink="/">
+      <img src="/imagens/logo.png" alt="Logo da aplicação Jornada">
+    </a>
+    <span class="spacer"></span>
+    <div class="links-toolbar">
+      <button mat-button color="primary" routerLink="filmes/em-cartaz">Em Cartaz</button>
+
+      <button mat-button color="primary" [matMenuTriggerFor]="adminMenu">Admin</button>
+      <mat-menu #adminMenu="matMenu">
+        <button mat-menu-item routerLink="/admin/filmes">Filmes</button>
+        <button mat-menu-item routerLink="salas">Salas</button>
+      </mat-menu>
+
+      <a routerLink="/perfil">
+        <img src="/icones/user.png" alt="Ícone da pessoa usuária">
+      </a>
+      <span class="usuario-nome">usuario.nome</span>
+      <button mat-stroked-button color="primary" (click)="logout()">SAIR</button>
+
+      <button routerLink="/cadastro-usuario" mat-raised-button color="primary">CADASTRE-SE</button>
+      <button routerLink="/login" mat-stroked-button>LOGIN</button>
+
+    </div>
+  </mat-toolbar>
+</header>
