@@ -4,6 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ContainerComponent } from '../../../../shared/components/container/container';
 import { RouterLink } from "@angular/router";
+import { inject } from '@angular/core';
+import { SalaService } from '../../../../core/services/sala.service';
+
 
 
 @Component({
@@ -14,5 +17,20 @@ import { RouterLink } from "@angular/router";
   styleUrl: './sala-lista.css'
 })
 export class SalaListaComponent {
-  
+  private salaService = inject(SalaService);
+  private router = inject(RouterLink);
+
+  listaSalas(): void {
+    this.salas = this.salaService.listarSalas();
+  }
+
+  editar(id: number): void {
+    this.router.navigate(['/salas', id, 'editar']);
+  }
+
+  excluir(id: number): void {
+    this.salaService.excluir(id).subscribe{() => {
+      this.listaSalas();
+    }};
+  }
 }

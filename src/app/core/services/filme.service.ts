@@ -4,14 +4,14 @@ import { Observable, of } from 'rxjs';
 import { Filme } from '../models';
 
 
-@Injectable({
+@Injectable ({
   providedIn: 'root'
-})
+}) 
 export class FilmeService {
   private http = inject(HttpClient);
   private apiUrl = 'http://localhost:8080/filmes';
 
-  listarEmCartaz(): Observable<Filme[]> {
+  listarEmCartaz(): Observable <Filme[]> {
     return this.http.get<Filme[]>(`${this.apiUrl}/em-cartaz`);
   }
 
